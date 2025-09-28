@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import "./globals.css";
 import ReactQueryProvider from "@/utils/providers/react-query-provider";
 import PetraWalletWrapper from "@/components/petra-wallet-wrapper";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "CertifiPro - Plateforme de Certification Produits",
@@ -31,6 +32,7 @@ export default function RootLayout({
           </PetraWalletWrapper>
         </ReactQueryProvider>
         <Analytics />
+        <Toaster />
       </body>
     </html>
   );

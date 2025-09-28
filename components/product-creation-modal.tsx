@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, Plus, AlertCircle, CheckCircle } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { TransactionSuccess } from "./transaction-success";
 import { useProductCreation } from "@/hooks/products";
 
@@ -46,10 +46,8 @@ export function ProductCreationModal({
 
     const priceNumber = Number.parseFloat(price);
     if (isNaN(priceNumber) || priceNumber <= 0) {
-      toast({
-        title: "Erreur",
+      toast.error("Erreur", {
         description: "Veuillez saisir un prix valide.",
-        variant: "destructive",
       });
       return;
     }
@@ -61,8 +59,7 @@ export function ProductCreationModal({
     });
 
     if (success) {
-      toast({
-        title: "Produit certifié avec succès",
+      toast.success("Produit certifié avec succès", {
         description: `${name} a été ajouté au catalogue des produits certifiés.`,
       });
       onSuccess?.();
@@ -82,7 +79,7 @@ export function ProductCreationModal({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="sm:max-w-lg max-h-[100vh] overflow-y-auto">
         {showTransactionSuccess ? (
           <TransactionSuccess
             transactionHash={transactionHash}
@@ -189,7 +186,7 @@ export function ProductCreationModal({
                 <Button
                   type="submit"
                   disabled={pending || !name || !description || !price}
-                  className="w-full bg-certified hover:bg-certified/90 text-certified-foreground"
+                  className="w-full bg-certified hover:bg-certified/90 text-certified-foreground border "
                 >
                   {pending ? (
                     <>

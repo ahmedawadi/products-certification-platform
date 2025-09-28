@@ -9,6 +9,7 @@ export function usePetraWallet() {
     account,
     connected,
     wallet,
+    wallets,
     network,
     signAndSubmitTransaction,
   } = useWallet();
@@ -19,11 +20,21 @@ export function usePetraWallet() {
     try {
       setIsConnecting(true);
 
+      // ✅ Check if Petra is available
+      const petra = wallets.find((w) => w.name.toLowerCase() === "petra");
+      if (!petra) {
+        throw new Error("Petra wallet is not installed in your browser.");
+      }
+
       await connect("Petra");
 
       return true;
     } catch (error) {
-      console.error("Probleme de connection:", error);
+      const err = error as Error;
+      if (err.message === "Petra wallet is not installed in your browser.")
+        throw new Error(
+          "Le portefeuille Petra n'est pas installé dans votre navigateur."
+        );
     } finally {
       setIsConnecting(false);
     }

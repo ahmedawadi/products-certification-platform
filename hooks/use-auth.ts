@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { toast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { usePetraWallet } from "@/hooks/use-petra-wallet";
 
 export function useAuth() {
@@ -19,8 +19,7 @@ export function useAuth() {
       const res = await connect();
 
       if (res) {
-        toast({
-          title: "Connexion réussie",
+        toast.success("Connexion réussie", {
           description:
             "Bienvenue dans le panneau d'administration ! Votre portefeuille Petra est connecté.",
         });
@@ -29,21 +28,18 @@ export function useAuth() {
       } else {
         const msg = "Échec de la connexion au portefeuille.";
         setWarning(msg);
-        toast({
-          title: "Erreur",
+        toast.error("Erreur", {
           description: msg,
-          variant: "destructive",
         });
         return false;
       }
     } catch (err) {
-      const msg = "Problème technique lors de la connexion au portefeuille.";
+      const msg = (err as Error).message;
       setWarning(msg);
-      toast({
-        title: "Problème technique",
+      toast.error("Problème technique", {
         description: msg,
-        variant: "destructive",
       });
+
       return false;
     } finally {
       setPending(false);
