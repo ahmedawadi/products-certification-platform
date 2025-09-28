@@ -1,12 +1,14 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Shield, Users, Award, TrendingUp } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card";
+import { useProducts } from "@/hooks/products";
+import { Shield, Users, Award, TrendingUp } from "lucide-react";
 
 export function StatsSection() {
+  const { products } = useProducts();
   const stats = [
     {
       icon: Shield,
       title: "Produits certifiés",
-      value: "1,247",
+      value: products?.length || 0,
       description: "Produits vérifiés et certifiés par nos experts",
     },
     {
@@ -18,7 +20,7 @@ export function StatsSection() {
     {
       icon: Award,
       title: "Certifications délivrées",
-      value: "3,892",
+      value: products?.length || 0,
       description: "Certifications accordées cette année",
     },
     {
@@ -27,15 +29,18 @@ export function StatsSection() {
       value: "98%",
       description: "De nos clients recommandent nos services",
     },
-  ]
+  ];
 
   return (
     <section className="py-16 bg-muted/30">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-4">Notre impact en chiffres</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-4">
+            Notre impact en chiffres
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Découvrez comment nous contribuons à la sécurité et à la qualité des produits industriels
+            Découvrez comment nous contribuons à la sécurité et à la qualité des
+            produits industriels
           </p>
         </div>
 
@@ -48,14 +53,20 @@ export function StatsSection() {
                     <stat.icon className="w-6 h-6 text-primary" />
                   </div>
                 </div>
-                <div className="text-3xl font-bold text-foreground mb-2">{stat.value}</div>
-                <div className="text-sm font-medium text-foreground mb-2">{stat.title}</div>
-                <div className="text-xs text-muted-foreground text-pretty">{stat.description}</div>
+                <div className="text-3xl font-bold text-foreground mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-sm font-medium text-foreground mb-2">
+                  {stat.title}
+                </div>
+                <div className="text-xs text-muted-foreground text-pretty">
+                  {stat.description}
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

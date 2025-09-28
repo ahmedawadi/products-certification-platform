@@ -1,9 +1,10 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface HeroSectionProps {
-  onLoginClick: () => void
+  onLoginClick: () => void;
 }
 
 export function HeroSection({ onLoginClick }: HeroSectionProps) {
@@ -18,19 +19,26 @@ export function HeroSection({ onLoginClick }: HeroSectionProps) {
       </div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 text-balance">CertifiPro</h1>
+        <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 text-balance">
+          CertifiPro
+        </h1>
         <p className="text-xl md:text-2xl text-white/90 mb-8 text-pretty leading-relaxed max-w-3xl mx-auto">
-          Plateforme de certification professionnelle pour garantir l'authenticité et la qualité de vos produits
-          industriels
+          Plateforme de certification professionnelle pour garantir
+          l'authenticité et la qualité de vos produits industriels
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button size="lg" className="bg-white text-slate-900 hover:bg-white/90 font-medium px-8">
-            Découvrir nos produits
-          </Button>
+          <Link href={"#productsSection"}>
+            <Button
+              size="lg"
+              className="bg-white text-slate-900 hover:bg-white/90 font-medium px-8"
+            >
+              Découvrir nos produits
+            </Button>
+          </Link>
           <Button
             variant="outline"
             size="lg"
-            className="border-white/30 text-white hover:bg-white/10 font-medium px-8 bg-transparent"
+            className="border-white/30 text-white hover:bg-white/10  hover:text-white font-medium px-8 bg-transparent"
             onClick={onLoginClick}
           >
             Accès administrateur
@@ -38,5 +46,5 @@ export function HeroSection({ onLoginClick }: HeroSectionProps) {
         </div>
       </div>
     </section>
-  )
+  );
 }

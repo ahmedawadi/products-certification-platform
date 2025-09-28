@@ -14,14 +14,14 @@ export default function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/dashboard");
+    if (isAuthenticated) router.push("/dashboard");
   }, [isAuthenticated]);
 
   return (
     <main className="min-h-screen">
       <HeroSection onLoginClick={() => setShowLoginModal(true)} />
 
-      <section className="py-16">
+      <section id="productsSection" className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">

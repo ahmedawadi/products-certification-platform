@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
 import { usePetraWallet } from "@/hooks/use-petra-wallet";
@@ -11,7 +11,7 @@ export function useAuth() {
   const router = useRouter();
   const { connect, isConnecting, isConnected } = usePetraWallet();
 
-  const login = useCallback(async () => {
+  const login = async () => {
     setPending(true);
     setWarning(null);
 
@@ -48,7 +48,8 @@ export function useAuth() {
     } finally {
       setPending(false);
     }
-  }, [connect, isConnected, router]);
+  };
+
   console.log(isConnected);
   return {
     pending: pending || isConnecting,

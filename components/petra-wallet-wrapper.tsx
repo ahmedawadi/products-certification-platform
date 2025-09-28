@@ -11,7 +11,7 @@ export default function PetraWalletWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <AptosWalletAdapterProvider plugins={wallets as any} autoConnect={true}>
+    <AptosWalletAdapterProvider plugins={wallets} autoConnect={true}>
       {children}
     </AptosWalletAdapterProvider>
   );
