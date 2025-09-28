@@ -1,0 +1,188 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Professional certification platform theme - inspired by sophisticated French design */
+  --background: oklch(1 0 0); /* Pure white background */
+  --foreground: oklch(0.145 0 0); /* Deep charcoal text */
+  --card: oklch(1 0 0); /* White cards */
+  --card-foreground: oklch(0.145 0 0); /* Dark text on cards */
+  --popover: oklch(1 0 0); /* White popover */
+  --popover-foreground: oklch(0.145 0 0); /* Dark popover text */
+  --primary: oklch(0.205 0 0); /* Deep black for primary actions */
+  --primary-foreground: oklch(0.985 0 0); /* White text on primary */
+  --secondary: oklch(0.97 0 0); /* Light gray secondary */
+  --secondary-foreground: oklch(0.205 0 0); /* Dark text on secondary */
+  --muted: oklch(0.97 0 0); /* Subtle gray backgrounds */
+  --muted-foreground: oklch(0.556 0 0); /* Muted text */
+  --accent: oklch(0.97 0 0); /* Accent backgrounds */
+  --accent-foreground: oklch(0.205 0 0); /* Dark accent text */
+  --destructive: oklch(0.577 0.245 27.325); /* Professional red for errors */
+  --destructive-foreground: oklch(0.577 0.245 27.325); /* White text on destructive */
+  --border: oklch(0.922 0 0); /* Subtle borders */
+  --input: oklch(0.922 0 0); /* Input backgrounds */
+  --ring: oklch(0.708 0 0); /* Focus rings */
+  --chart-1: oklch(0.646 0.222 41.116); /* Professional blue */
+  --chart-2: oklch(0.6 0.118 184.704); /* Professional teal */
+  --chart-3: oklch(0.398 0.07 227.392); /* Professional green */
+  --chart-4: oklch(0.828 0.189 84.429); /* Professional orange */
+  --chart-5: oklch(0.769 0.188 70.08); /* Professional purple */
+  --radius: 0.625rem; /* Subtle rounded corners */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Certification specific colors */
+  --certified: oklch(0.45 0.15 140); /* Trust green for certified products */
+  --certified-foreground: oklch(0.99 0 0);
+  --warning: oklch(0.65 0.18 65); /* Warning amber */
+  --warning-foreground: oklch(0.15 0 0);
+  --hero-overlay: oklch(0.12 0 0 / 0.8); /* Dark overlay for hero sections */
+}
+
+.dark {
+  --background: oklch(0.145 0 0); /* Deep dark background */
+  --foreground: oklch(0.985 0 0); /* Light text */
+  --card: oklch(0.145 0 0); /* Dark cards */
+  --card-foreground: oklch(0.985 0 0); /* Light text on cards */
+  --popover: oklch(0.145 0 0); /* Dark popover */
+  --popover-foreground: oklch(0.985 0 0); /* Light popover text */
+  --primary: oklch(0.985 0 0); /* Light primary in dark mode */
+  --primary-foreground: oklch(0.205 0 0); /* Dark text on primary */
+  --secondary: oklch(0.269 0 0); /* Dark gray secondary */
+  --secondary-foreground: oklch(0.985 0 0); /* Light text on secondary */
+  --muted: oklch(0.269 0 0); /* Dark muted backgrounds */
+  --muted-foreground: oklch(0.708 0 0); /* Muted light text */
+  --accent: oklch(0.269 0 0); /* Dark accent backgrounds */
+  --accent-foreground: oklch(0.985 0 0); /* Light accent text */
+  --destructive: oklch(0.396 0.141 25.723); /* Darker red for dark mode */
+  --destructive-foreground: oklch(0.637 0.237 25.331); /* Light text on destructive */
+  --border: oklch(0.269 0 0); /* Dark borders */
+  --input: oklch(0.269 0 0); /* Dark input backgrounds */
+  --ring: oklch(0.439 0 0); /* Light focus rings */
+  --chart-1: oklch(0.488 0.243 264.376); /* Professional blue */
+  --chart-2: oklch(0.696 0.17 162.48); /* Professional teal */
+  --chart-3: oklch(0.769 0.188 70.08); /* Professional green */
+  --chart-4: oklch(0.627 0.265 303.9); /* Professional orange */
+  --chart-5: oklch(0.645 0.246 16.439); /* Professional purple */
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+
+  /* Custom certification colors */
+  --certified: oklch(0.55 0.15 140); /* Brighter green for dark mode */
+  --certified-foreground: oklch(0.08 0 0);
+  --warning: oklch(0.75 0.18 65); /* Brighter amber for dark mode */
+  --warning-foreground: oklch(0.08 0 0);
+  --hero-overlay: oklch(0.05 0 0 / 0.9); /* Darker overlay for hero sections */
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Custom certification colors */
+  --color-certified: var(--certified);
+  --color-certified-foreground: var(--certified-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-hero-overlay: var(--hero-overlay);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Professional typography scale */
+  h1 {
+    @apply text-4xl font-bold tracking-tight text-balance;
+  }
+  h2 {
+    @apply text-3xl font-semibold tracking-tight text-balance;
+  }
+  h3 {
+    @apply text-2xl font-semibold tracking-tight text-balance;
+  }
+  h4 {
+    @apply text-xl font-medium tracking-tight text-balance;
+  }
+  p {
+    @apply text-pretty leading-relaxed;
+  }
+}
+
+@layer utilities {
+  .text-certified {
+    color: var(--color-certified);
+  }
+  .bg-certified {
+    background-color: var(--color-certified);
+  }
+  .text-certified-foreground {
+    color: var(--color-certified-foreground);
+  }
+  .text-warning {
+    color: var(--color-warning);
+  }
+  .bg-warning {
+    background-color: var(--color-warning);
+  }
+  .text-warning-foreground {
+    color: var(--color-warning-foreground);
+  }
+  .bg-hero-overlay {
+    background-color: var(--color-hero-overlay);
+  }
+}
